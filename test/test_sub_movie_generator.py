@@ -45,10 +45,10 @@ class SubtitleTests(TestBase):
                 except Exception as e:
                     self.fail(f"Unexpected exception: {e}")
 
-    @patch('src.sub_movie_generator.is_ffmpeg_installed', return_value=False)
+    @patch('src.utils.checks.is_ffmpeg_installed', return_value=False)
     def test_gen_movie_with_subtitle_no_ffmpeg_installed(self, _: MagicMock):
         from src.sub_movie_generator import SubMovieGenerator  # type: ignore
 
-    @patch('src.sub_movie_generator.is_imagemagick_installed', return_value=False)
+    @patch('src.utils.checks.is_imagemagick_installed', return_value=False)
     def test_gen_movie_with_subtitle_no_imagemagick_installed(self, _: MagicMock):
         from src.sub_movie_generator import SubMovieGenerator  # type: ignore
