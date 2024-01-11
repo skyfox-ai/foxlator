@@ -2,7 +2,7 @@
 import argparse
 import os
 import pathlib
-from subtitles import gen_movie_with_subtitles
+from .sub_movie_generator import SubMovieGenerator
 
 
 def main():
@@ -28,7 +28,7 @@ def main():
                         help='Language into which subtitles should be translated. If you do not specify the language will be automatically selected')
 
     args = parser.parse_args()
-    return gen_movie_with_subtitles(args.movie_path, args.destination, args.model_size, args.language)
+    return SubMovieGenerator(args.movie_path, args.model_size, args.language).gen_movie_with_subtitles(args.destination)
 
 
 if __name__ == "__main__":

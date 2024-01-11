@@ -3,10 +3,11 @@
 import os
 from pathlib import Path
 import tempfile
-from src.subtitles import gen_movie_with_subtitles
+from src.sub_movie_generator import SubMovieGenerator
 from utils.base import TestBase
 from contextlib import contextmanager
 import numpy as np
+from unittest.mock import MagicMock, patch
 from moviepy.editor import VideoClip  # type: ignore
 from moviepy.audio.AudioClip import AudioArrayClip  # type: ignore
 
@@ -38,8 +39,20 @@ class SubtitleTests(TestBase):
         with self._create_video_with_audio_file() as video_file:
             with tempfile.NamedTemporaryFile(suffix=".mp4") as temp_file:
                 try:
-                    gen_movie_path = gen_movie_with_subtitles(
-                        video_file, Path(str(temp_file.name)), 'tiny')
+                    gen_movie_path = SubMovieGenerator(
+                        video_file, 'tiny').gen_movie_with_subtitles(Path(str(temp_file.name)))
                     self.assertTrue(os.path.exists(gen_movie_path))
                 except Exception as e:
                     self.fail(f"Unexpected exception: {e}")
+
+    @patch('src.sub_movie_generator.check_ffmpeg_installed', return_value=False)
+    def test_gen_movie_with_subtitle_no_ffmpeg_installed(self, _: MagicMock):
+        with self._create_video_with_audio_file() as video_file:
+            with self.assertRaises(SystemExit):
+                SubMovieGenerator(video_file, 'tiny')
+
+    @patch('src.sub_movie_generator.check_imagemagick_installed', return_value=False)
+    def test_gen_movie_with_subtitle_no_imagemagick_installed(self, _: MagicMock):
+        with self._create_video_with_audio_file() as video_file:
+            with self.assertRaises(SystemExit):
+                SubMovieGenerator(video_file, 'tiny')
