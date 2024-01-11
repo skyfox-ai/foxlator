@@ -1,15 +1,5 @@
-import subprocess
-import logging
+from .utils.system import check_if_installed
 
 
 def is_ffmpeg_installed():
-    try:
-        subprocess.run(["ffmpeg", "-version"], check=True,
-                       stdout=subprocess.PIPE,)
-        return True
-    except FileNotFoundError:
-        logging.error(
-            'ffmpeg is not installed. This tool is required.')
-        logging.error(
-            'Please install ffmpeg manually: https://ffmpeg.org/download.html')
-        return False
+    return check_if_installed("ffmpeg", "ffmpeg -version", True)

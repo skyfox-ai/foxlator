@@ -1,15 +1,6 @@
-import subprocess
-import logging
+
+from .utils.system import check_if_installed
 
 
 def is_imagemagick_installed():
-    try:
-        subprocess.run(["convert", "-version"], check=True,
-                       stdout=subprocess.PIPE,)
-        return True
-    except FileNotFoundError:
-        logging.error(
-            'imagemagick is not installed. This tool is required.')
-        logging.error(
-            'imagemagick install ffmpeg manually: https://imagemagick.org/script/download.php')
-        return False
+    return check_if_installed("imagemagick", "convert -version", True)
