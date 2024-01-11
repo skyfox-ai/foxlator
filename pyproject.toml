@@ -22,8 +22,8 @@ classifiers = [
 ]
 
 [project.scripts]
-ffmpeg-installed = "third_party.ffmpeg:check_ffmpeg_installed"
-imagemagick-installed = "third_party.imagemagick:check_imagemagick_installed"
+is-ffmpeg-installed = "src.third_party.ffmpeg:is_ffmpeg_installed"
+is-imagemagick-installed = "src.third_party.imagemagick:is_imagemagick_installed"
 
 [tool.setuptools.package-data]
 "pkgname" = ["py.typed"]

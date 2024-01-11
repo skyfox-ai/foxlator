@@ -2,7 +2,7 @@ import subprocess
 import logging
 
 
-def check_imagemagick_installed():
+def is_imagemagick_installed():
     try:
         subprocess.run(["convert", "-version"], check=True,
                        stdout=subprocess.PIPE,)

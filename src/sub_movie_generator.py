@@ -3,15 +3,13 @@ from typing import List, Optional
 from foxlator_lib.video import Video
 from foxlator_lib.stt.whisper_stt import WhisperSTT, AudioTextSegment
 
-from src.third_party.ffmpeg import check_ffmpeg_installed
-from src.third_party.imagemagick import check_imagemagick_installed
+from src.third_party.ffmpeg import is_ffmpeg_installed
+from src.third_party.imagemagick import is_imagemagick_installed
 
 
 class SubMovieGenerator:
 
     def __init__(self, movie_path: Path, model_size: str, lang: Optional[str] = None):
-        if not check_ffmpeg_installed() or not check_imagemagick_installed():
-            exit()
         self.video = Video(movie_path)
         self.lang = lang
         self._model_size = model_size
@@ -24,3 +22,7 @@ class SubMovieGenerator:
     def gen_movie_with_subtitles(self, destination: Path) -> Path:
         subtitles = self.get_subtitles_for_movie()
         return self.video.apply_subtitles(subtitles, destination)
+
+
+if not is_ffmpeg_installed() or not is_imagemagick_installed():
+    exit()

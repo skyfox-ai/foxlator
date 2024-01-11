@@ -2,7 +2,7 @@ import subprocess
 import logging
 
 
-def check_ffmpeg_installed():
+def is_ffmpeg_installed():
     try:
         subprocess.run(["ffmpeg", "-version"], check=True,
                        stdout=subprocess.PIPE,)

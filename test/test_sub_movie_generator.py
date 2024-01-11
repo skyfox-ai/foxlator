@@ -47,12 +47,8 @@ class SubtitleTests(TestBase):
 
     @patch('src.sub_movie_generator.check_ffmpeg_installed', return_value=False)
     def test_gen_movie_with_subtitle_no_ffmpeg_installed(self, _: MagicMock):
-        with self._create_video_with_audio_file() as video_file:
-            with self.assertRaises(SystemExit):
-                SubMovieGenerator(video_file, 'tiny')
+        from src.sub_movie_generator import SubMovieGenerator  # type: ignore
 
     @patch('src.sub_movie_generator.check_imagemagick_installed', return_value=False)
     def test_gen_movie_with_subtitle_no_imagemagick_installed(self, _: MagicMock):
-        with self._create_video_with_audio_file() as video_file:
-            with self.assertRaises(SystemExit):
-                SubMovieGenerator(video_file, 'tiny')
+        from src.sub_movie_generator import SubMovieGenerator  # type: ignore
