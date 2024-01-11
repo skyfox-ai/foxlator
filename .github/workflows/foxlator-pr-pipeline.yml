@@ -23,6 +23,9 @@ jobs:
           git clone https://github.com/skyfox-ai/skyfox-ai.github.io
           cd skyfox-ai.github.io
           git remote set-url origin https://x-access-token:${{ secrets.GIT_TOKEN }}@github.com/skyfox-ai/skyfox-ai.github.io
+          if ! [ -d ./foxlator ]; then
+            mkdir ./foxlator
+          fi
           mv --force ../htmlcov/* ./foxlator
           git add .
           git commit -m "Test coverage update"
