@@ -9,3 +9,5 @@ sudo sed -i '/<policy domain="path" rights="none" pattern="@\*"/d' /etc/ImageMag
 
 echo "$ - installing pip"
 curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10
+
+python3.10 -m pip install --upgrade -r ./build-requirements.txt
