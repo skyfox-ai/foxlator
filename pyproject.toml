@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "foxlator"
-version = "0.5.0"
+version = "0.6.0"
 authors = [
   { name="Witold Haza", email="witold.haza@gmail.com" },
   { name="Kacper Czyz", email="kacper.czyz@protonmail.com" },
