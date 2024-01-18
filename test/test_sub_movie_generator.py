@@ -3,7 +3,7 @@
 import os
 from pathlib import Path
 import tempfile
-from src.sub_movie_generator import SubMovieGenerator
+from src.foxlator.sub_movie_generator import SubMovieGenerator
 from utils.base import TestBase
 from contextlib import contextmanager
 import numpy as np
