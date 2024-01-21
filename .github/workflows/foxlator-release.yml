@@ -32,7 +32,7 @@ jobs:
       - name: "Build wheel package"
         run: ./bin/build-package.sh
       - name: "Release to PyPI"
-        run: python3.10 -m twine upload  dist/* -u ${{ secrets.PYPI_USERNAME }} -p ${{ secrets.PYPI_TOKEN }}
+        run: python3.10 -m twine upload dist/* -u ${{ secrets.PYPI_USERNAME }} -p ${{ secrets.PYPI_TOKEN }}
       - name: "Rebase dev branch with main"
         run: |
           git checkout dev
