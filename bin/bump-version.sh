@@ -33,4 +33,11 @@ fi
 
 git add $config_file
 git commit -m "Build notification - "$version
+
+if [ "$1" = '--major' ]; then
+    git checkout -b release/$version
+    git push --set-upstream origin release/$version
+    git checkout dev
+fi
+
 git push
