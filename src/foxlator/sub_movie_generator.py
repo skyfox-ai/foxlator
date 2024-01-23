@@ -3,7 +3,7 @@ from typing import List, Optional
 from foxlator_lib.video import Video
 from foxlator_lib.stt.whisper_stt import WhisperSTT, AudioTextSegment
 
-from .utils.checks import is_ffmpeg_installed, is_imagemagick_installed
+from foxlator.utils.checks import is_ffmpeg_installed, is_imagemagick_installed
 
 
 class SubMovieGenerator:
