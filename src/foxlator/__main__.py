@@ -2,7 +2,7 @@
 import argparse
 import os
 import pathlib
-from .sub_movie_generator import SubMovieGenerator
+from foxlator.sub_movie_generator import SubMovieGenerator
 
 
 def main():

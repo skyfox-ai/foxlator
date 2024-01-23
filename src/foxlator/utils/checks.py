@@ -1,4 +1,4 @@
-from .system import check_if_installed
+from foxlator.utils.system import check_if_installed
 
 
 def is_ffmpeg_installed():
