@@ -36,7 +36,7 @@ if [ $test_file_count -eq 0 ]; then
     echo "$ - WARNING - didn't not find any test files, nothing to do here"
 else
     echo "$ - found" $test_file_count "test files, will run"
-    PYTHONPATH=./test python3.10 -m pytest --cov-config .coveragerc --cov=src --cov-report html --verbose $test_files
+    PYTHONPATH=./src python3.10 -m pytest --cov-config .coveragerc --cov=src --cov-report html --verbose $test_files
     
     if [[ $? -ne 0 ]]; then
         echo "$ - ERROR: tests failed!"
